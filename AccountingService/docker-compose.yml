@@ -1,0 +1,22 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+     - POSTGRES_USER=postgres
+     - POSTGRES_PASSWORD=postgres
+    ports:
+     - '5432:5432'
+    volumes:
+     - ./postgres-data:/var/lib/postgresql/data
+     # copy the sql script to create tables
+     - ./init_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  accountingservice:
+    image: ${DOCKER_REGISTRY-}accountingservice
+    build:
+      context: .
+      dockerfile: AccountingService/Dockerfile
+    depends_on: 
+     - db

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lsPEGEaZZXIpyleBVesMXDfqfZV7tc4jyDGe6TFdVbuyGV4l0zikOxG/kc7hX2YSpLkY6pFkFYm7HinMPikEXw==",
+  "dgSpecHash": "ud55UMD7ZwGHeofunS+kXQAo1UQYKIvufPQ5hor2L6g1vp6ZNPBMEsJ42Iyg3Ty3MApOcYyFbd0ALO88kdHNBQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gamma\\OneDriveEFIF\\OneDrive - EFIF\\CPH Business\\Software Development\\4. System Integration\\Assignment 3\\AccountingService\\AccountingService\\AccountingService.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gamma\\.nuget\\packages\\confluent.kafka\\1.9.3\\confluent.kafka.1.9.3.nupkg.sha512",
+    "C:\\Users\\gamma\\.nuget\\packages\\librdkafka.redist\\1.9.2\\librdkafka.redist.1.9.2.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.7\\microsoft.entityframeworkcore.6.0.7.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.7\\microsoft.entityframeworkcore.abstractions.6.0.7.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.7\\microsoft.entityframeworkcore.analyzers.6.0.7.nupkg.sha512",
@@ -28,6 +30,7 @@
     "C:\\Users\\gamma\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
+    "C:\\Users\\gamma\\.nuget\\packages\\system.memory\\4.5.0\\system.memory.4.5.0.nupkg.sha512",
     "C:\\Users\\gamma\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
   ],
   "logs": []

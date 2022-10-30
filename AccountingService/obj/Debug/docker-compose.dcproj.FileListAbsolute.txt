@@ -28,3 +28,4 @@ C:\Users\gamma\OneDriveEFIF\OneDrive - EFIF\CPH Business\Software Development\4.
 C:\Users\gamma\OneDriveEFIF\OneDrive - EFIF\CPH Business\Software Development\4. System Integration\Assignment 3\AccountingService\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\gamma\OneDriveEFIF\OneDrive - EFIF\CPH Business\Software Development\4. System Integration\Assignment 3\AccountingService\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\gamma\OneDriveEFIF\OneDrive - EFIF\CPH Business\Software Development\4. System Integration\Assignment 3\AccountingService\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\gamma\OneDriveEFIF\OneDrive - EFIF\CPH Business\Software Development\4. System Integration\Assignment 3\AccountingService\bin\Debug\Confluent.Kafka.dll

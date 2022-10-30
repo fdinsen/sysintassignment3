@@ -25,3 +25,6 @@ Postgres can be accessed on the port: 5432
 2. run `docker build . -t librarydb`
 3. run `docker run -d --name=library -p 3306:3306 librarydb`
 4. run the service with `mvn spring-boot:run`
+
+### Documentation
+The service includes a consumer for buying books, and endpoints at `http://localhost:8080/books/program/{id}` and `http://localhost:8080/books/student/{id}`

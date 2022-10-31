@@ -151,8 +151,30 @@ public class BookStorage {
     }
 
 
+    private static final String GET_RECOMMENDATIONS_BY_STUDENT_ID = "SELECT idBooks, stock, studyprogramid, price FROM library.Books" +
+            " JOIN library.Students student ON student.programid = studyprogramid" +
+            " WHERE student.studentid = ?";
 
+    public List<Book> getRecommendedBooksByStudentId(Integer studentId) {
+        List<Book> books = new ArrayList<>();
+        try (Connection con = getConnection()) {
+            PreparedStatement statement = con.prepareStatement(GET_RECOMMENDATIONS_BY_STUDENT_ID);
+            statement.setInt(1, studentId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("idBooks");
+                int stock = resultSet.getInt("stock");
+                int studyprogramid = resultSet.getInt("studyprogramid");
+                float price = resultSet.getFloat("price");
 
+                Book book = new Book(id, stock, studyprogramid, price);
+                books.add(book);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return books;
 
+    }
 
 }

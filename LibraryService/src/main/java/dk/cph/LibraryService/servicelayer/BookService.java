@@ -25,4 +25,10 @@ public class BookService {
         bookStorage.buyBook(studentId, bookId);
     }
 
+    public List<Book> getRecommendedBooksByStudentId(Integer studentid) {
+        return bookStorage.getRecommendedBooksByStudentId(studentid);
+    }
+
+
+
 }

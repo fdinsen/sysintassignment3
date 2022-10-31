@@ -45,4 +45,17 @@ public class BookController {
 
         return resource;
     }
+
+    @GetMapping("/student/recommended/{id}")
+    public CollectionModel<Book> recommendedBooksByStudentID(@PathVariable int id)
+    {
+        List<Book> books = bookService.getRecommendedBooksByStudentId(id);
+
+        CollectionModel<Book> resource = CollectionModel.of(books);
+        WebMvcLinkBuilder linkTo = WebMvcLinkBuilder.linkTo(methodOn(this.getClass()).booksByProgram(id));
+        resource.add(linkTo.withRel("book-by-program"));
+
+        return resource;
+    }
+
 }

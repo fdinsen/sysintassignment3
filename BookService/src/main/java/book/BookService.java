@@ -4,7 +4,7 @@ import com.bookstore.grpc.Book;
 import com.bookstore.grpc.bookStoreGrpc;
 import com.google.protobuf.Timestamp;
 import io.grpc.stub.StreamObserver;
-import producer.KafkaSendMessage;
+import producer.KafkaProducerConfig;
 
 import javax.json.Json;
 
@@ -19,7 +19,7 @@ public class BookService extends bookStoreGrpc.bookStoreImplBase {
         int bookPrice = request.getBookPrice();
 
         //TODO INVOKE KAFKA SERVER
-        KafkaSendMessage kafkaMessage = new KafkaSendMessage();
+        KafkaProducerConfig producer = new KafkaProducerConfig();
 
         String message = Json.createObjectBuilder()
                 .add("studentId", studentId)
@@ -29,8 +29,7 @@ public class BookService extends bookStoreGrpc.bookStoreImplBase {
                 .build()
                 .toString();
 
-
-        kafkaMessage.sendMessage("OrderCreated", message);
+        producer.sendMessage(message);
 
         Book.APIResponse.Builder response = Book.APIResponse.newBuilder();
 

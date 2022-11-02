@@ -13,14 +13,15 @@ import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFuture;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
 public class KafkaProducerConfig {
 
-    @Value(value = "${kafka.bootstrapAddress}")
-    private String bootstrapAddress;
+    @Value(value = "localhost:9092")
+    private String bootstrapAddress = "localhost:9092";
     @Autowired
     private KafkaTemplate<String, String> kafkaTemplate;
     private final String topicName = "OrderCreated";
@@ -45,8 +46,14 @@ public class KafkaProducerConfig {
         return new KafkaTemplate<>(producerFactory());
     }
 
+    public void sendMessage(String msg) {
+        kafkaTemplate = kafkaTemplate();
+        kafkaTemplate.send(topicName, msg);
+    }
+
     //ASYNC WAY TO SEND MESSAGES
-    public void sendMessage(String message) {
+    public void sendMessageAsync(String message) {
+        kafkaTemplate = kafkaTemplate();
         ListenableFuture<SendResult<String, String>> future =
                 kafkaTemplate.send(topicName, message);
         future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {

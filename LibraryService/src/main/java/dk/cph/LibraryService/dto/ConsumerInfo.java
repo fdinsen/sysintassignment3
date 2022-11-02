@@ -3,10 +3,12 @@ package dk.cph.LibraryService.dto;
 public class ConsumerInfo {
     private Integer studentId;
     private Integer bookId;
+    private Integer bookPrice;
 
-    public ConsumerInfo(Integer studentId, Integer bookId) {
+    public ConsumerInfo(Integer studentId, Integer bookId, Integer bookPrice) {
         this.studentId = studentId;
         this.bookId = bookId;
+        this.bookPrice = bookPrice;
     }
 
     public Integer getStudentId() {
@@ -23,5 +25,13 @@ public class ConsumerInfo {
 
     public void setBookId(Integer bookId) {
         this.bookId = bookId;
+    }
+
+    public Integer getBookPrice() {
+        return bookPrice;
+    }
+
+    public void setBookPrice(Integer bookPrice) {
+        this.bookPrice = bookPrice;
     }
 }

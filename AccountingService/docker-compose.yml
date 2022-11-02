@@ -13,10 +13,19 @@ services:
      - ./postgres-data:/var/lib/postgresql/data
      # copy the sql script to create tables
      - ./init_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-  accountingservice:
-    image: ${DOCKER_REGISTRY-}accountingservice
-    build:
-      context: .
-      dockerfile: AccountingService/Dockerfile
-    depends_on: 
-     - db
+  #accountingservice:
+  #  image: ${DOCKER_REGISTRY-}accountingservice
+  #  build:
+  #    context: .
+  #    dockerfile: AccountingService/Dockerfile
+  #  depends_on: 
+  #   - db
+  #   - broker
+  #zookeeper:
+  #  image: confluentinc/cp-zookeeper:7.0.1
+  #  container_name: zookeeper
+  #  ports:
+  #      - "2181:2181"
+  #  environment:
+  #    ZOOKEEPER_CLIENT_PORT: 2181
+  #    ZOOKEEPER_TICK_TIME: 2000

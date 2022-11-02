@@ -19,7 +19,7 @@ namespace AccountingService.Controllers
         }
 
         [HttpGet(Name = "GetOrders")]
-        public IEnumerable<Order> Get(string student_id)
+        public IEnumerable<Order> Get(int student_id)
         {
             return _service.GetAllOrdersFromStudent(student_id);
         }

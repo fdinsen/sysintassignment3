@@ -1,4 +1,5 @@
 ﻿using AccountingService.Model;
+using AccountingService.Services;
 using Confluent.Kafka;
 using System.Diagnostics;
 using System.Text.Json;
@@ -9,7 +10,15 @@ namespace AccountingService.Consumers
     {
         private readonly string _topic = "OrderCreated";
         private readonly string _groupID = "test_group";
-        private readonly string _bootstrapServer = "host.docker.internal:9092";
+        private readonly string _bootstrapServer = "localhost:9092";
+        private IAccountingService _service;
+        private readonly ILogger<OrderConsumer> _logger;
+
+        public OrderConsumer(ILoggerFactory factory)
+        {
+            _logger = factory.CreateLogger<OrderConsumer>();
+            _service = new Services.AccountingService(factory);
+        }
         public Task StartAsync(CancellationToken cancellationToken)
         {
             var config = new ConsumerConfig
@@ -29,7 +38,11 @@ namespace AccountingService.Consumers
                         while(true)
                         {
                             var consumer = consumerBuilder.Consume(cancelToken.Token);
-                            //var orderRequest = JsonSerializer.Deserialize<OrderDTO>(consumer.Message.Value);
+                            var orderRequest = JsonSerializer.Deserialize<OrderDTO>(consumer.Message.Value);
+                            if (orderRequest != null){
+                                _service.AddOrder(orderRequest);
+                            }
+                            
                             Debug.WriteLine("Test " + consumer.Message.Value);
                         }
                     }catch(OperationCanceledException)

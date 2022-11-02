@@ -18,11 +18,12 @@ public class BookConsumer {
 
     BookService bookService = new BookService(new BookStorage(conStr, user, pass));
 
-    @KafkaListener(topics = "info",
+    @KafkaListener(topics = "OrderCreated",
             groupId = "group_id")
 
     public void consume(String message) {
         ConsumerInfo info = gson.fromJson(message, ConsumerInfo.class);
         bookService.buyBook(info.getStudentId(), info.getBookId());
+
     }
 }

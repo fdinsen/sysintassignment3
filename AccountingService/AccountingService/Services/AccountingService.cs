@@ -18,7 +18,7 @@ namespace AccountingService.Services
             _storage.AddOrder(order);
         }
 
-        public IEnumerable<Order> GetAllOrdersFromStudent(string student_id)
+        public IEnumerable<Order> GetAllOrdersFromStudent(int student_id)
         {
             return _storage.GetAllOrdersFromStudent(student_id);
         }

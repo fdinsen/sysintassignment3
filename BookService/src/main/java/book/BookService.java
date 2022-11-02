@@ -14,17 +14,14 @@ public class BookService extends bookStoreGrpc.bookStoreImplBase {
         System.out.print("Inside buy book");
 
         int studentId = request.getStudentId();
-        Timestamp orderDate = request.getOrderDate();
-        String isbn = request.getIsbn();
+        int bookId = request.getBookId();
         int bookPrice = request.getBookPrice();
 
-        //TODO INVOKE KAFKA SERVER
         KafkaProducerConfig producer = new KafkaProducerConfig();
 
         String message = Json.createObjectBuilder()
                 .add("studentId", studentId)
-                .add("orderDate", String.valueOf(orderDate))
-                .add("isbn", isbn)
+                .add("bookId", bookId)
                 .add("price", bookPrice)
                 .build()
                 .toString();
@@ -33,7 +30,7 @@ public class BookService extends bookStoreGrpc.bookStoreImplBase {
 
         Book.APIResponse.Builder response = Book.APIResponse.newBuilder();
 
-        response.setResponseCode(0).setResponseMessage("SUCCES BYING THE BOOK: " + isbn);
+        response.setResponseCode(0).setResponseMessage("SUCCES BYING THE BOOK: " + bookId);
 
 
         responseObserver.onNext(response.build());

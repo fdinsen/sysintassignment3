@@ -24,30 +24,12 @@ public final class Book {
     int getStudentId();
 
     /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
+     * <code>int32 bookId = 2;</code>
      */
-    boolean hasOrderDate();
-    /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-     */
-    com.google.protobuf.Timestamp getOrderDate();
-    /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-     */
-    com.google.protobuf.TimestampOrBuilder getOrderDateOrBuilder();
+    int getBookId();
 
     /**
-     * <code>string isbn = 3;</code>
-     */
-    java.lang.String getIsbn();
-    /**
-     * <code>string isbn = 3;</code>
-     */
-    com.google.protobuf.ByteString
-        getIsbnBytes();
-
-    /**
-     * <code>int32 bookPrice = 4;</code>
+     * <code>int32 bookPrice = 3;</code>
      */
     int getBookPrice();
   }
@@ -65,7 +47,7 @@ public final class Book {
     }
     private BuyBookRequest() {
       studentId_ = 0;
-      isbn_ = "";
+      bookId_ = 0;
       bookPrice_ = 0;
     }
 
@@ -98,26 +80,12 @@ public final class Book {
               studentId_ = input.readInt32();
               break;
             }
-            case 18: {
-              com.google.protobuf.Timestamp.Builder subBuilder = null;
-              if (orderDate_ != null) {
-                subBuilder = orderDate_.toBuilder();
-              }
-              orderDate_ = input.readMessage(com.google.protobuf.Timestamp.parser(), extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(orderDate_);
-                orderDate_ = subBuilder.buildPartial();
-              }
+            case 16: {
 
+              bookId_ = input.readInt32();
               break;
             }
-            case 26: {
-              java.lang.String s = input.readStringRequireUtf8();
-
-              isbn_ = s;
-              break;
-            }
-            case 32: {
+            case 24: {
 
               bookPrice_ = input.readInt32();
               break;
@@ -163,65 +131,19 @@ public final class Book {
       return studentId_;
     }
 
-    public static final int ORDERDATE_FIELD_NUMBER = 2;
-    private com.google.protobuf.Timestamp orderDate_;
+    public static final int BOOKID_FIELD_NUMBER = 2;
+    private int bookId_;
     /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
+     * <code>int32 bookId = 2;</code>
      */
-    public boolean hasOrderDate() {
-      return orderDate_ != null;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-     */
-    public com.google.protobuf.Timestamp getOrderDate() {
-      return orderDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : orderDate_;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getOrderDateOrBuilder() {
-      return getOrderDate();
+    public int getBookId() {
+      return bookId_;
     }
 
-    public static final int ISBN_FIELD_NUMBER = 3;
-    private volatile java.lang.Object isbn_;
-    /**
-     * <code>string isbn = 3;</code>
-     */
-    public java.lang.String getIsbn() {
-      java.lang.Object ref = isbn_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        isbn_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string isbn = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIsbnBytes() {
-      java.lang.Object ref = isbn_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        isbn_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-
-    public static final int BOOKPRICE_FIELD_NUMBER = 4;
+    public static final int BOOKPRICE_FIELD_NUMBER = 3;
     private int bookPrice_;
     /**
-     * <code>int32 bookPrice = 4;</code>
+     * <code>int32 bookPrice = 3;</code>
      */
     public int getBookPrice() {
       return bookPrice_;
@@ -244,14 +166,11 @@ public final class Book {
       if (studentId_ != 0) {
         output.writeInt32(1, studentId_);
       }
-      if (orderDate_ != null) {
-        output.writeMessage(2, getOrderDate());
-      }
-      if (!getIsbnBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, isbn_);
+      if (bookId_ != 0) {
+        output.writeInt32(2, bookId_);
       }
       if (bookPrice_ != 0) {
-        output.writeInt32(4, bookPrice_);
+        output.writeInt32(3, bookPrice_);
       }
       unknownFields.writeTo(output);
     }
@@ -266,16 +185,13 @@ public final class Book {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(1, studentId_);
       }
-      if (orderDate_ != null) {
+      if (bookId_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getOrderDate());
-      }
-      if (!getIsbnBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, isbn_);
+          .computeInt32Size(2, bookId_);
       }
       if (bookPrice_ != 0) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, bookPrice_);
+          .computeInt32Size(3, bookPrice_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -295,13 +211,8 @@ public final class Book {
       boolean result = true;
       result = result && (getStudentId()
           == other.getStudentId());
-      result = result && (hasOrderDate() == other.hasOrderDate());
-      if (hasOrderDate()) {
-        result = result && getOrderDate()
-            .equals(other.getOrderDate());
-      }
-      result = result && getIsbn()
-          .equals(other.getIsbn());
+      result = result && (getBookId()
+          == other.getBookId());
       result = result && (getBookPrice()
           == other.getBookPrice());
       result = result && unknownFields.equals(other.unknownFields);
@@ -317,12 +228,8 @@ public final class Book {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + STUDENTID_FIELD_NUMBER;
       hash = (53 * hash) + getStudentId();
-      if (hasOrderDate()) {
-        hash = (37 * hash) + ORDERDATE_FIELD_NUMBER;
-        hash = (53 * hash) + getOrderDate().hashCode();
-      }
-      hash = (37 * hash) + ISBN_FIELD_NUMBER;
-      hash = (53 * hash) + getIsbn().hashCode();
+      hash = (37 * hash) + BOOKID_FIELD_NUMBER;
+      hash = (53 * hash) + getBookId();
       hash = (37 * hash) + BOOKPRICE_FIELD_NUMBER;
       hash = (53 * hash) + getBookPrice();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -460,13 +367,7 @@ public final class Book {
         super.clear();
         studentId_ = 0;
 
-        if (orderDateBuilder_ == null) {
-          orderDate_ = null;
-        } else {
-          orderDate_ = null;
-          orderDateBuilder_ = null;
-        }
-        isbn_ = "";
+        bookId_ = 0;
 
         bookPrice_ = 0;
 
@@ -497,12 +398,7 @@ public final class Book {
       public com.bookstore.grpc.Book.BuyBookRequest buildPartial() {
         com.bookstore.grpc.Book.BuyBookRequest result = new com.bookstore.grpc.Book.BuyBookRequest(this);
         result.studentId_ = studentId_;
-        if (orderDateBuilder_ == null) {
-          result.orderDate_ = orderDate_;
-        } else {
-          result.orderDate_ = orderDateBuilder_.build();
-        }
-        result.isbn_ = isbn_;
+        result.bookId_ = bookId_;
         result.bookPrice_ = bookPrice_;
         onBuilt();
         return result;
@@ -555,12 +451,8 @@ public final class Book {
         if (other.getStudentId() != 0) {
           setStudentId(other.getStudentId());
         }
-        if (other.hasOrderDate()) {
-          mergeOrderDate(other.getOrderDate());
-        }
-        if (!other.getIsbn().isEmpty()) {
-          isbn_ = other.isbn_;
-          onChanged();
+        if (other.getBookId() != 0) {
+          setBookId(other.getBookId());
         }
         if (other.getBookPrice() != 0) {
           setBookPrice(other.getBookPrice());
@@ -620,201 +512,41 @@ public final class Book {
         return this;
       }
 
-      private com.google.protobuf.Timestamp orderDate_ = null;
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> orderDateBuilder_;
+      private int bookId_ ;
       /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
+       * <code>int32 bookId = 2;</code>
        */
-      public boolean hasOrderDate() {
-        return orderDateBuilder_ != null || orderDate_ != null;
+      public int getBookId() {
+        return bookId_;
       }
       /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
+       * <code>int32 bookId = 2;</code>
        */
-      public com.google.protobuf.Timestamp getOrderDate() {
-        if (orderDateBuilder_ == null) {
-          return orderDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : orderDate_;
-        } else {
-          return orderDateBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public Builder setOrderDate(com.google.protobuf.Timestamp value) {
-        if (orderDateBuilder_ == null) {
-          if (value == null) {
-            throw new NullPointerException();
-          }
-          orderDate_ = value;
-          onChanged();
-        } else {
-          orderDateBuilder_.setMessage(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public Builder setOrderDate(
-          com.google.protobuf.Timestamp.Builder builderForValue) {
-        if (orderDateBuilder_ == null) {
-          orderDate_ = builderForValue.build();
-          onChanged();
-        } else {
-          orderDateBuilder_.setMessage(builderForValue.build());
-        }
-
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public Builder mergeOrderDate(com.google.protobuf.Timestamp value) {
-        if (orderDateBuilder_ == null) {
-          if (orderDate_ != null) {
-            orderDate_ =
-              com.google.protobuf.Timestamp.newBuilder(orderDate_).mergeFrom(value).buildPartial();
-          } else {
-            orderDate_ = value;
-          }
-          onChanged();
-        } else {
-          orderDateBuilder_.mergeFrom(value);
-        }
-
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public Builder clearOrderDate() {
-        if (orderDateBuilder_ == null) {
-          orderDate_ = null;
-          onChanged();
-        } else {
-          orderDate_ = null;
-          orderDateBuilder_ = null;
-        }
-
-        return this;
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public com.google.protobuf.Timestamp.Builder getOrderDateBuilder() {
+      public Builder setBookId(int value) {
         
-        onChanged();
-        return getOrderDateFieldBuilder().getBuilder();
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      public com.google.protobuf.TimestampOrBuilder getOrderDateOrBuilder() {
-        if (orderDateBuilder_ != null) {
-          return orderDateBuilder_.getMessageOrBuilder();
-        } else {
-          return orderDate_ == null ?
-              com.google.protobuf.Timestamp.getDefaultInstance() : orderDate_;
-        }
-      }
-      /**
-       * <code>.google.protobuf.Timestamp orderDate = 2;</code>
-       */
-      private com.google.protobuf.SingleFieldBuilderV3<
-          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-          getOrderDateFieldBuilder() {
-        if (orderDateBuilder_ == null) {
-          orderDateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                  getOrderDate(),
-                  getParentForChildren(),
-                  isClean());
-          orderDate_ = null;
-        }
-        return orderDateBuilder_;
-      }
-
-      private java.lang.Object isbn_ = "";
-      /**
-       * <code>string isbn = 3;</code>
-       */
-      public java.lang.String getIsbn() {
-        java.lang.Object ref = isbn_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          isbn_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
-      }
-      /**
-       * <code>string isbn = 3;</code>
-       */
-      public com.google.protobuf.ByteString
-          getIsbnBytes() {
-        java.lang.Object ref = isbn_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          isbn_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string isbn = 3;</code>
-       */
-      public Builder setIsbn(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
-        isbn_ = value;
+        bookId_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string isbn = 3;</code>
+       * <code>int32 bookId = 2;</code>
        */
-      public Builder clearIsbn() {
+      public Builder clearBookId() {
         
-        isbn_ = getDefaultInstance().getIsbn();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string isbn = 3;</code>
-       */
-      public Builder setIsbnBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        isbn_ = value;
+        bookId_ = 0;
         onChanged();
         return this;
       }
 
       private int bookPrice_ ;
       /**
-       * <code>int32 bookPrice = 4;</code>
+       * <code>int32 bookPrice = 3;</code>
        */
       public int getBookPrice() {
         return bookPrice_;
       }
       /**
-       * <code>int32 bookPrice = 4;</code>
+       * <code>int32 bookPrice = 3;</code>
        */
       public Builder setBookPrice(int value) {
         
@@ -823,7 +555,7 @@ public final class Book {
         return this;
       }
       /**
-       * <code>int32 bookPrice = 4;</code>
+       * <code>int32 bookPrice = 3;</code>
        */
       public Builder clearBookPrice() {
         
@@ -1516,14 +1248,12 @@ public final class Book {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nBook.proto\032\037google/protobuf/timestamp." +
-      "proto\"s\n\016BuyBookRequest\022\021\n\tstudentId\030\001 \001" +
-      "(\005\022-\n\torderDate\030\002 \001(\0132\032.google.protobuf." +
-      "Timestamp\022\014\n\004isbn\030\003 \001(\t\022\021\n\tbookPrice\030\004 \001" +
-      "(\005\"<\n\013APIResponse\022\027\n\017responseMessage\030\001 \001" +
-      "(\t\022\024\n\014responseCode\030\002 \001(\00525\n\tbookStore\022(\n" +
-      "\007buyBook\022\017.BuyBookRequest\032\014.APIResponseB" +
-      "\024\n\022com.bookstore.grpcb\006proto3"
+      "\n\nBook.proto\"F\n\016BuyBookRequest\022\021\n\tstuden" +
+      "tId\030\001 \001(\005\022\016\n\006bookId\030\002 \001(\005\022\021\n\tbookPrice\030\003" +
+      " \001(\005\"<\n\013APIResponse\022\027\n\017responseMessage\030\001" +
+      " \001(\t\022\024\n\014responseCode\030\002 \001(\00525\n\tbookStore\022" +
+      "(\n\007buyBook\022\017.BuyBookRequest\032\014.APIRespons" +
+      "eB\024\n\022com.bookstore.grpcb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1536,21 +1266,19 @@ public final class Book {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.google.protobuf.TimestampProto.getDescriptor(),
         }, assigner);
     internal_static_BuyBookRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_BuyBookRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_BuyBookRequest_descriptor,
-        new java.lang.String[] { "StudentId", "OrderDate", "Isbn", "BookPrice", });
+        new java.lang.String[] { "StudentId", "BookId", "BookPrice", });
     internal_static_APIResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_APIResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_APIResponse_descriptor,
         new java.lang.String[] { "ResponseMessage", "ResponseCode", });
-    com.google.protobuf.TimestampProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

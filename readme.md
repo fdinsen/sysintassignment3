@@ -14,7 +14,7 @@ LibraryService has the following REST endpoints:
 - Get owned books by student
 - Get books by study-program id
 
-![pis][diagram.png]
+![This place should contain a diagram](diagram.png)
 
 ## Kafka
 ### How to run

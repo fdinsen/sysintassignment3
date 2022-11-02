@@ -26,7 +26,7 @@ public class BookService extends bookStoreGrpc.bookStoreImplBase {
                 .build()
                 .toString();
 
-        producer.sendMessage(message);
+        producer.sendMessageAsync(message);
 
         Book.APIResponse.Builder response = Book.APIResponse.newBuilder();
 
